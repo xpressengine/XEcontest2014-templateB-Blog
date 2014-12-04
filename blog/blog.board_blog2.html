@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (C) NAVER <http://www.navercorp.com> 
+ * @author NAVER (developers@xpressengine.com)
+ *
+ * Find and create module object by mif, act in Request Argument
+ * Set module information
+ *
+ * @mainpage XpressEngine
+ * @section intro introduction
+ *
+ * XE is an opensource and being developed in the opensource project.
+ * For more information, please see the link below.
+ * - Official website: http://www.xpressengine.com
+ * - Offcial Repository: https://github.com/xpressengine/xe-core
+ * 
+ * "XpressEngine (XE)" is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation; either 
+ * version 2.1 of the License, or (at your option) any later version. 
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+-->
+<html lang="ko">
+<head>
+<!-- META -->
+<meta charset="utf-8">
+<meta name="Generator" content="XpressEngine">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1100">
+<!-- TITLE -->
+<title>Blog Theme : XE Contest</title>
+<!-- CSS -->
+<link rel="stylesheet" href="../xe_common/xe.min.css">
+<link rel="stylesheet" href="./css/layout.blog.css">
+<link rel="stylesheet" href="./css/jquery.bxslider.css">
+<link rel="stylesheet" href="./css/widget.blog.css">
+<link rel="stylesheet" href="./css/widget.counter.css">
+<link rel="stylesheet" href="./css/widget.tag.css">
+<link rel="stylesheet" href="./css/widgetstyle.blog.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/49314/XEIconv10/style.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="../xe_icon/ie7/ie7.css"><![endif]-->
+<!-- JS -->
+<!--[if lt IE 9]><script src="../xe_common/jquery-1.x.min.js"></script><![endif]-->
+<!--[if gte IE 9]><!--><script src="../xe_common/jquery.min.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="../xe_common/html5.js"></script><![endif]-->
+<script src="../xe_common/xe.min.js"></script>
+<script src="./js/jquery.bxslider.js"></script>
+<script src="./js/layout.blog.js"></script>
+<script src="./js/colorset_test.js"></script>
+    
+<!-- 게시판 CSS, JS -->
+<link rel="stylesheet" href="../board/css/board.default.css">
+<!--[if lt IE 9]><link rel="stylesheet" href="../board/css/board.default_ie8.css"><![endif]-->
+<script src="../board/js/masonry.pkgd.min.js"></script>
+<script src="../board/js/board.default.js"></script>
+<!-- /게시판 css -->
+</head>
+
+<!-- [D] [Color Set] 
+         black & yellow(기본형) : 클래스 없음 
+         white & yellow        : color_white
+         -->
+<body class="color_white">  
+<div class="container">
+    <!-- [D] 배경 이미지 고정형 : 이미지 사이즈 1440x800
+                          배경 이지미 패턴형 : 클래스 pattern 추가 
+                          배경 이미지 미사용 : 클래스 top_bg_none 추가 -->
+    <div class="top_bg top_bg_none" style="background-image:url(./img/head_bg_img.png)"></div>
+	<p class="skip"><a href="#content">메뉴 건너뛰기</a></p>
+    <header class="header">
+        <div class="top_section">
+            <h1>
+                <a href="#">
+                    <!-- [D] top_bg 영역에 배경 이미지 사용할 경우 블로그 타이틀 영역으로 블라인드 텍스트 적용  -->
+                    <span class="blind">http://contest.xpressengine.com/</span>
+                    <!-- [D] 배경 이미지 사용하지 않고, 이미지 요소 사용시  alt 값에 적용, 이미지  기본 사이즈 720*290 -->
+                    <img src="./img/head_img.png" class="header_img" alt="XE BLOG">
+                </a>
+            </h1>
+            <div class="search_area">                   
+                <!-- SEARCH -->
+                <form action="get" class="search">
+                    <input type="hidden" name="vid" value="">
+                    <input type="hidden" name="mid" value="">
+                    <input type="hidden" name="act" value="IS">
+                    <input type="text" name="is_keyword" value="" required placeholder="search" title="search input">
+                    <input type="submit" value="&#xe66d;">
+                </form>
+                <!-- /SEARCH -->
+            </div>
+            <div class="login_area">
+                <!-- before_login
+                <a href="#"><i class="xe-user"></i><span class="blind">로그인/회원가입</span></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /before_login -->
+                
+                <!-- after_login -->
+                <!-- [D] 프로필 이미지를 등록하지 않았을 경우 기본 이미지 노출, alt 속성에는 프로필명 적용 -->
+                <a href="#" class="login_after"><img src="./img/ico_default.jpg" alt="OO님 프로필"></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">회원정보 보기</a></li>
+                    <li><a href="#">스크랩 보기</a></li>
+                    <li><a href="#">저장함 보기</a></li>
+                    <li><a href="#">작성 글 보기</a></li>
+                    <li><a href="#">친구 보기</a></li>
+                    <li><a href="#">쪽지함 보기</a></li>
+                    <li class="logout"><a href="#">로그아웃</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /after_login -->
+            </div>
+            <!-- [D]회원이 관리자 권한을 가지고 있을 경우 노출  --> 
+            <div class="manage_area">
+                <a href="#"><i class="xe-tool"></i><span class="blind">관리</span></a>
+            </div>
+            <div class="social_area">
+                <ul>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">twitter</span></a></li> 
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">facebook</span></a></li>
+                <li><a href="#"><i class="xe-medium"></i><span class="blind">medium</span></a></li>   
+                </ul>
+            </div>    
+                
+        </div>
+        <!-- GNB -->
+        <nav class="gnb" id="gnb">
+            <ul>
+            <li><a href="blog.main.html">prologue</a></li>
+            <li>
+                <!-- [D] 하위 메뉴가 있을 경우 클래스 tri 추가 -->
+                <a href="#" class="tri">color-theme</a>
+                <ul class="depth2">
+                <li><a href="#">black &amp; yellow</a></li>
+                <li><a href="#">white &amp; yellow</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">sub type</a>
+                <ul class="depth2">
+                <li><a href="blog.sub.html">left sidebar</a></li>
+                <li><a href="blog.sub_right.html">right sidebar</a></li>
+                <li><a href="blog.sub_full.html">full width</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">gallery</a>
+                <ul class="depth2">
+                <li><a href="blog.board_gallery.html">standard 2 column</a></li>
+                <li><a href="blog.board_gallery2.html">masonry 4 column</a></li>
+                <li><a href="blog.board_gallery3.html">classic 3 column</a></li>
+                <li><a href="blog.board_gallery4.html">round 4 column</a></li>
+                <li><a href="blog.board_gallery_single.html">gallery single</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">blog</a>
+                <ul class="depth2">
+                <li><a href="blog.board_blog.html">blog style 1</a></li>
+                <li><a href="blog.board_blog2.html">blog style 2</a></li>
+                <li><a href="blog.board_blog3.html">blog style 3</a></li>
+                <li><a href="blog.board_blog4.html">blog style 4</a></li>
+                <li><a href="blog.board_list_basic.html">list style basic</a></li>
+                <li><a href="blog.board_guestbook.html">guestbook</a></li>
+                <li><a href="blog.board_write.html">write form</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.sub_license.html">license</a></li>    
+            </ul>
+        </nav>
+	    <!-- /GNB -->
+    </header>
+	<!-- [D] 서브 페이지 클래스 적용
+	         left sidebar  : body sub 
+	         right sidebar : body sub right 
+	         full width    : body suv full -->
+	<div class="body sub right">
+		<!-- SIDE BAR -->
+		<div class="sidebar">
+		    <div class="profile">
+		        <!-- [D] 이미지 기본 사이즈 200*160 -->
+		        <a href="#" class="thumb"><img src="./img/img_top_profile.png" alt=""></a>
+		        <h1>XpressEngine</h1>
+		        <p>누구나 쉽고 편하고 자유롭게 콘텐츠를 발행을 할 수 있도록 하기 위한 CMS</p>    
+		    </div>
+		    <nav class="lnb">
+		        <h2>Categories</h2>
+                <ul>
+                <li><a href="#">sub-menu</a></li>    
+                <li><a href="#">sub-menu</a></li> 
+                <!-- [D] 하위 메뉴가 존재할 경우 클래스 more 추가 및 열기/닫기 버튼 적용 --> 
+                <li class="more">
+                    <!-- [D] 하위 메뉴 열기 클릭시 부모 요소인 li에 클래스 open 추가 -->
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>  
+                <li class="more open">
+                    <!-- [D] 하위 메뉴 닫기 클릭시 부모 요소인 li에 클래스 open 삭제  -->
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>
+                <li><a href="#">sub-menu</a></li>  
+                </ul>		        
+		    </nav>
+		    <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent comments</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent articles</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 0px 0px;width:100%;height:181px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Tag</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <div class="tb_widgetTag">
+                                <a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a><a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+		</div>
+		<!-- /SIDE BAR -->
+		<div class="content_wrap">
+		    <!-- SUB TITLE -->
+	        <div class="sub_title">
+	            <h1>Blog Style 2</h1>
+	            <ul class="page_location">
+                <li><a href="#">home</a></li>
+                <li><a href="#">blog</a></li>
+                <!-- 리스트 마지막에 클래스 last 적용 -->
+                <li class="last"><a href="#">Blog Style 2</a></li>
+                </ul>
+            </div>
+            <!-- /SUB TITLE -->    
+    		<!-- CONTENT -->
+    		<div class="content" id="content">
+                <!-- BOARD - Blog Style 2 -->
+                <div class="board">
+                    <div class="board_list">
+                        <!-- [D] 블로그 리스트 형태 적용 클래스
+                                1. Blog Style 1 : class="blog_type",
+                                2. Blog Style 2 : class="blog_type2",
+                                3. Blog Style 3 : class="blog_type3",
+                                4. Blog Style 4 : class="blog_type4"
+                        -->
+                        <!-- 블로그 스타일 리스트 -->
+                        <ol id="bd_lst" class="bd_lst blog_type2">
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-01.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">Design</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목 (줄 수 제한 없음)</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수... (줄 수 제한 없음)</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="../board/img/thumb_xe_80.png" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                                <!-- [D] 관리자모드 일 경우 노출 -->
+                                                <input type="checkbox" class="chk_mng">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-02.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">CSS</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목 블로그타입#2 텍스트 짧은 제목블로그타입#2 텍스트 짧은 제목</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수...</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="./img/ico_default.jpg" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-03.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">Inspiring</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수...</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="../board/img/thumb_xe_80.png" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-04.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">Inspiring</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수...</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="../board/img/thumb_xe_80.png" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-05.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">Inspiring</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수...</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="../board/img/thumb_xe_80.png" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- [D] class="bd_img 에 썸네일 크기 사이즈 width 적용 -->
+                            <div class="bd_img" style="width:140px">
+                                <a href="#">
+                                    <!-- [D] 썸네일 크기 사이즈 적용 -->
+                                    <img src="../board/img/b2-06.jpg" alt="" style="width:140px;height:140px">
+                                    <div class="img_dimmed"></div>
+                                </a>
+                            </div>
+                            <div class="bd_lst_con">
+                                <div class="bd_lst_info">
+                                    <p><a href="#" class="bd_category">Inspiring</a></p>
+                                    <a href="#" class="bd_tit">블로그타입#2 텍스트 짧은 제목</a>
+                                    <p class="bd_content">블로그형 게시판 2타입입니다. 게시판에 포스팅된 날짜와 파일종류가 좌측에 노출됩니다. 날짜와 파일형식 / 이미지 썸네일 / 게시글 제목, 글 내용, 작성날짜, 댓글수, 조회수...</p>
+                                    <div class="bd_info">
+                                        <div class="bd_profile">
+                                            <img src="../board/img/thumb_xe_80.png" alt="" style="width:40px;height:40px">
+                                        </div>
+                                        <div class="bd_info_con">
+                                            <a href="#" class="bd_writer_name">XpressEngine</a>
+                                            <p>
+                                                <span class="bd_date">2d ago,</span>
+                                                <span class="bd_cmt">2 Comments,</span>
+                                                <span class="bd_likes">206 read</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        </ol>
+                        <!-- /블로그 스타일 리스트 -->
+                    </div>
+                    <div class="list_footer">
+                        <!-- BTN AREA -->
+                        <!-- [D] 관리자 모드시 노출 -->
+                        <div class="btn_area" style="display:none">
+                            <div class="btn_area_l">
+                                <a href="#" class="btn_type btn_lst" style="width:70px">
+                                    <i class="xe-list-ul-l"></i>
+                                    <span class="btn_txt">목록</span>
+                                </a>
+                                <div class="search_area">
+                                    <form action="" method="post">
+                                        <div class="search_select">
+                                            <select>
+                                            <option value="">제목+내용</option>
+                                            <option value="">제목</option>
+                                            <option value="">내용</option>
+                                            <option value="">댓글</option>
+                                            <option value="">이름</option>
+                                            <option value="">닉네임</option>
+                                            <option value="">아이디</option>
+                                            <option value="">태그</option>
+                                            </select>
+                                        </div>
+                                        <div class="search_con">
+                                            <input type="text" name="" value="" class="search_input" style="">
+                                            <a href="#" class="btn_type btn_search"><i class="xe-magnifier"></i><span class="blind">검색</span></a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="btn_area_r">
+                                <a href="#" class="btn_type" style="width:70px">
+                                    <i class="xe-pen"></i>
+                                    <span class="btn_txt">쓰기</span>
+                                </a>
+                                <a href="#" class="btn_type" style="width:70px">
+                                    <i class="xe-tool"></i>
+                                    <span class="btn_txt">설정</span>
+                                </a>
+                                <a href="#" class="btn_type" style="width:104px">
+                                    <i class="xe-paper"></i>
+                                    <span class="btn_txt">게시글 관리</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /BTN AREA -->
+                        <!-- PAGINATE -->
+                        <div class="bd_paginate">
+                            <a href="#" class="pg_btn tooltip">
+                                <i class="xe-angle-left"><span class="blind">이전</span></i>
+                                <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                    <span class="speech">Prev</span>
+                                    <i class="edge"></i>
+                                </span>
+                            </a>
+                            <a href="#" class="tooltip">1
+                                <span class="tooltip_wrap" style="margin-left: -28px; bottom: 100%; display: block;">
+                                    <span class="speech">첫 페이지</span>
+                                    <i class="edge"></i>
+                                </span>
+                            </a>
+                            <strong>2</strong>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">7</a>
+                            <a href="#">8</a>
+                            <a href="#">9</a>
+                            <a href="#">10</a>
+                            <div class="more_page">
+                                <a href="#" class="tooltip">...
+                                    <span class="tooltip_wrap" style="margin-left: -33px; bottom: 100%; display: block;">
+                                        <span class="speech">페이지 입력</span>
+                                        <i class="edge"></i>
+                                    </span>
+                                </a>
+                                <div class="page_box" style="margin-left:-89px;display: block;">
+                                    <input type="text" name="" value="" class="page_num">
+                                    <span class="page_total">/ 14</span>
+                                    <a href="#" class="btn_move">이동</a>
+                                    <span class="ico_edge"></span>
+                                </div>
+                            </div>
+                            <a href="#" class="tooltip">14
+                                <span class="tooltip_wrap" style="margin-left: -28px; bottom: 100%; display: block;">
+                                    <span class="speech">끝 페이지</span>
+                                    <i class="edge"></i>
+                                </span>
+                            </a>
+                            <a href="#" class="pg_btn tooltip">
+                                <i class="xe-angle-right"><span class="blind">다음</span></i>
+                                <span class="tooltip_wrap" style="margin-left: -18px; bottom: 100%; display: block;">
+                                    <span class="speech">Next</span>
+                                    <i class="edge"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <!-- /PAGINATE -->
+                    </div>
+                </div>
+                <!-- /BOARD - Blog Style 2 -->
+    		</div>    
+    		<!-- /CONTENT -->
+		</div>
+		
+		<div class="ccl_area">
+		    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.ko" target="_blank"><span class="blind">저작자표시 - 동일조건변경허락</span></a>
+		</div>
+	</div>
+
+    <div class="footer_wrap">
+        <footer class="footer">
+            <div class="about">
+                <p class="about_thumb"><a href="#"><img src="./img/f_profile.png" alt="XE"></a></p>
+                <p class="f_cont">XpressEngine(XE) installation type is written in PHP CMS (Content Management System). Anybody can use or adapt open source licenses, open and anyone can participate in the project as a developer.</p>
+            </div>
+            <div class="subscribe">
+                <h2 class="f_title">subscribe</h2>    
+                <div class="send_email">
+                    <form action="get">
+                        <input type="text" placeholder="email" title="email" class="input_email">
+                        <input type="submit" value="&#xe619;" title="send button" class="btn_send">
+                    </form>
+                </div>
+                <p class="f_cont">You can fill in the e-mail to receive this information, announcements, and major events.</p>
+            </div>
+            <div class="explore">
+                <h2 class="f_title">Explore</h2>
+                <ul class="lst_sns">
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">Facebook</span></a></li>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">Twitter</span></a></li>
+                <li><a href="#"><i class="xe-linkedin"></i><span class="blind">Linkedin</span></a></li>
+                <li><a href="#"><i class="xe-google-plus"></i><span class="blind">Google plus</span></a></li>
+                <li><a href="#"><i class="xe-github"></i><span class="blind">Github</span></a></li>
+                </ul>    
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 68px 0px;width:285px;height:65px;float:left">    
+                <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                    <div class="widgetContainer">
+                        <div class="tb_widgetConuter">
+                            <dl>
+                            <dt class="blind">today</dt>
+                            <dd class="today_num">168</dd>
+                            <dt class="total">TOTAL</dt>
+                            <dd class="total num">553,712</dd>    
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">Copyright @ <a href="#">NAVER Corp.</a>Supported by <a href="#">D2 Program</a>.</p>  
+        </footer>
+    </div>
+</div>
+<a href="#" class="btn_top"><i class="xe-angle-up"><span class="blind">위로가기</span></i></a>
+</body>
+</html>

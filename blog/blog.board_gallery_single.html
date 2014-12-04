@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (C) NAVER <http://www.navercorp.com> 
+ * @author NAVER (developers@xpressengine.com)
+ *
+ * Find and create module object by mif, act in Request Argument
+ * Set module information
+ *
+ * @mainpage XpressEngine
+ * @section intro introduction
+ *
+ * XE is an opensource and being developed in the opensource project.
+ * For more information, please see the link below.
+ * - Official website: http://www.xpressengine.com
+ * - Offcial Repository: https://github.com/xpressengine/xe-core
+ * 
+ * "XpressEngine (XE)" is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation; either 
+ * version 2.1 of the License, or (at your option) any later version. 
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+-->
+<html lang="ko">
+<head>
+<!-- META -->
+<meta charset="utf-8">
+<meta name="Generator" content="XpressEngine">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1100">
+<!-- TITLE -->
+<title>Blog Theme : XE Contest</title>
+<!-- CSS -->
+<link rel="stylesheet" href="../xe_common/xe.min.css">
+<link rel="stylesheet" href="./css/layout.blog.css">
+<link rel="stylesheet" href="./css/jquery.bxslider.css">
+<link rel="stylesheet" href="./css/widget.blog.css">
+<link rel="stylesheet" href="./css/widget.counter.css">
+<link rel="stylesheet" href="./css/widget.tag.css">
+<link rel="stylesheet" href="./css/widgetstyle.blog.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/49314/XEIconv10/style.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="../xe_icon/ie7/ie7.css"><![endif]-->
+<!-- JS -->
+<!--[if lt IE 9]><script src="../xe_common/jquery-1.x.min.js"></script><![endif]-->
+<!--[if gte IE 9]><!--><script src="../xe_common/jquery.min.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="../xe_common/html5.js"></script><![endif]-->
+<script src="../xe_common/xe.min.js"></script>
+<script src="./js/jquery.bxslider.js"></script>
+<script src="./js/layout.blog.js"></script>
+<script src="./js/colorset_test.js"></script>
+    
+<!-- 게시판 CSS, JS -->
+<link rel="stylesheet" href="http://www.xpressengine.com/modules/editor/styles/default/style.css?20140425104912">
+<link rel="stylesheet" href="../board/css/board.default.css">
+<!--[if lt IE 9]><link rel="stylesheet" href="../board/css/board.default_ie8.css"><![endif]-->
+<script src="../board/js/masonry.pkgd.min.js"></script>
+<script src="../board/js/board.default.js"></script>
+<!-- /게시판 css -->
+</head>
+
+<!-- [D] [Color Set] 
+         black & yellow(기본형) : 클래스 없음 
+         white & yellow        : color_white
+         -->
+<body>  
+<div class="container">
+    <!-- [D] 배경 이미지 고정형 : 이미지 사이즈 1440x800
+                          배경 이지미 패턴형 : 클래스 pattern 추가 
+                          배경 이미지 미사용 : 클래스 top_bg_none 추가 -->
+    <div class="top_bg" style="background-image:url(./img/head_bg_img.png)"></div>
+	<p class="skip"><a href="#content">메뉴 건너뛰기</a></p>
+    <header class="header">
+        <div class="top_section">
+            <h1>
+                <a href="#">
+                    <!-- [D] top_bg 영역에 배경 이미지 사용할 경우 블로그 타이틀 영역으로 블라인드 텍스트 적용  -->
+                    <span class="blind">http://contest.xpressengine.com/</span>
+                    <!-- [D] 배경 이미지 사용하지 않고, 이미지 요소 사용시  alt 값에 적용, 이미지  기본 사이즈 720*290 -->
+                    <img src="./img/head_img.png" class="header_img" alt="XE BLOG" style="display:none">
+                </a>
+            </h1>
+            <div class="search_area">                   
+                <!-- SEARCH -->
+                <form action="get" class="search">
+                    <input type="hidden" name="vid" value="">
+                    <input type="hidden" name="mid" value="">
+                    <input type="hidden" name="act" value="IS">
+                    <input type="text" name="is_keyword" value="" required placeholder="search" title="search input">
+                    <input type="submit" value="&#xe66d;">
+                </form>
+                <!-- /SEARCH -->
+            </div>
+            <div class="login_area">
+                <!-- before_login
+                <a href="#"><i class="xe-user"></i><span class="blind">로그인/회원가입</span></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /before_login -->
+                
+                <!-- after_login -->
+                <!-- [D] 프로필 이미지를 등록하지 않았을 경우 기본 이미지 노출, alt 속성에는 프로필명 적용 -->
+                <a href="#" class="login_after"><img src="./img/ico_default.jpg" alt="OO님 프로필"></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">회원정보 보기</a></li>
+                    <li><a href="#">스크랩 보기</a></li>
+                    <li><a href="#">저장함 보기</a></li>
+                    <li><a href="#">작성 글 보기</a></li>
+                    <li><a href="#">친구 보기</a></li>
+                    <li><a href="#">쪽지함 보기</a></li>
+                    <li class="logout"><a href="#">로그아웃</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /after_login -->
+            </div>
+            <!-- [D]회원이 관리자 권한을 가지고 있을 경우 노출  --> 
+            <div class="manage_area">
+                <a href="#"><i class="xe-tool"></i><span class="blind">관리</span></a>
+            </div>
+            <div class="social_area">
+                <ul>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">twitter</span></a></li> 
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">facebook</span></a></li>
+                <li><a href="#"><i class="xe-medium"></i><span class="blind">medium</span></a></li>   
+                </ul>
+            </div>    
+                
+        </div>
+        <!-- GNB -->
+        <nav class="gnb" id="gnb">
+            <ul>
+            <li><a href="blog.main.html">prologue</a></li>
+            <li>
+                <!-- [D] 하위 메뉴가 있을 경우 클래스 tri 추가 -->
+                <a href="#" class="tri">color-theme</a>
+                <ul class="depth2">
+                <li><a href="#">black &amp; yellow</a></li>
+                <li><a href="#">white &amp; yellow</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">sub type</a>
+                <ul class="depth2">
+                <li><a href="blog.sub.html">left sidebar</a></li>
+                <li><a href="blog.sub_right.html">right sidebar</a></li>
+                <li><a href="blog.sub_full.html">full width</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">gallery</a>
+                <ul class="depth2">
+                <li><a href="blog.board_gallery.html">standard 2 column</a></li>
+                <li><a href="blog.board_gallery2.html">masonry 4 column</a></li>
+                <li><a href="blog.board_gallery3.html">classic 3 column</a></li>
+                <li><a href="blog.board_gallery4.html">round 4 column</a></li>
+                <li><a href="blog.board_gallery_single.html">gallery single</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">blog</a>
+                <ul class="depth2">
+                <li><a href="blog.board_blog.html">blog style 1</a></li>
+                <li><a href="blog.board_blog2.html">blog style 2</a></li>
+                <li><a href="blog.board_blog3.html">blog style 3</a></li>
+                <li><a href="blog.board_blog4.html">blog style 4</a></li>
+                <li><a href="blog.board_list_basic.html">list style basic</a></li>
+                <li><a href="blog.board_guestbook.html">guestbook</a></li>
+                <li><a href="blog.board_write.html">write form</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.sub_license.html">license</a></li>    
+            </ul>
+        </nav>
+	    <!-- /GNB -->
+    </header>
+	<!-- [D] 서브 페이지 클래스 적용
+	         left sidebar  : body sub 
+	         right sidebar : body sub right 
+	         full width    : body suv full -->
+	<div class="body sub full">
+		<!-- SIDE BAR -->
+		<div class="sidebar">
+		    <div class="profile">
+		        <!-- [D] 이미지 기본 사이즈 200*160 -->
+		        <a href="#" class="thumb"><img src="./img/img_top_profile.png" alt=""></a>
+		        <h1>XpressEngine</h1>
+		        <p>누구나 쉽고 편하고 자유롭게 콘텐츠를 발행을 할 수 있도록 하기 위한 CMS</p>    
+		    </div>
+		    <nav class="lnb">
+		        <h2>Categories</h2>
+                <ul>
+                <li><a href="#">sub-menu</a></li>    
+                <li><a href="#">sub-menu</a></li> 
+                <!-- [D] 하위 메뉴가 존재할 경우 클래스 more 추가 및 열기/닫기 버튼 적용 --> 
+                <li class="more">
+                    <!-- [D] 하위 메뉴 열기 클릭시 부모 요소인 li에 클래스 open 추가 -->
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>  
+                <li class="more open">
+                    <!-- [D] 하위 메뉴 닫기 클릭시 부모 요소인 li에 클래스 open 삭제  -->
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>
+                <li><a href="#">sub-menu</a></li>  
+                </ul>		        
+		    </nav>
+		    <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent comments</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent articles</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 0px 0px;width:100%;height:181px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Tag</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <div class="tb_widgetTag">
+                                <a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a><a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+		</div>
+		<!-- /SIDE BAR -->
+		<div class="content_wrap">
+		    <!-- SUB TITLE -->
+	        <div class="sub_title">
+	            <h1>Gallery Single</h1>
+	            <ul class="page_location">
+                <li><a href="#">home</a></li>
+                <li><a href="#">gallery</a></li>
+                <!-- 리스트 마지막에 클래스 last 적용 -->
+                <li class="last"><a href="#">Gallery Single</a></li>
+                </ul>
+            </div>
+            <!-- /SUB TITLE -->    
+    		<!-- CONTENT -->
+    		<div class="content" id="content">
+                <div class="board">
+                    <div class="board_read">
+                        <!-- READ HEADER -->
+                        <div class="read_header">
+                            <h2 class="tit">
+                                <a href="#">메리 크리스마스! #13</a>
+                            </h2>
+                            <div class="write_info">                            
+                                <span class="txt_piece">by</span><a href="#" class="author">Marob</a>
+                                <a href="#" class="category">Design</a>
+                                <span class="time">14.10.27</span>
+                            </div>
+                            <div class="meta">
+                                <ul class="meta_l">
+                                <li class="hits" title="조회수"><i class="xe-eye"><span class="blind">조회수</span></i><span>2015 views</span></li>
+                                <li class="cmt" title="댓글"><i class="xe-comment-bubble"><span class="blind">댓글</span></i><span>32 comments</span></li>
+                                <li class="likeit" title="like it"><i class="xe-heart"><span class="blind">like it</span></i><span>248 likes</span></li>
+                                </ul>
+                                <div class="meta_r">
+                                    <a href="#" class="url">http://contest.xpressengine.com/templates/blog/gallery.single.html</a>
+                                    <button class="btn_copy">복사</button>
+                                </div>
+                            </div>
+                            <div class="func_bar">
+                                <ul class="func_bar_lst">
+                                <li>
+                                    <!-- [D] 선택 시 class="on" 추가 -->
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-magnifier-expand"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                            <span class="speech">크게</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>  
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-magnifier-reduce"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                            <span class="speech">작게</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a> 
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-arrow-down"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -36px; bottom: 100%; display: block;">
+                                            <span class="speech">(컨텐츠)아래로</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a> 
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-comment-bubble"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -33px; bottom: 100%; display: block;">
+                                            <span class="speech">댓글로 가기</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-heart"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -21px; bottom: 100%; display: block;">
+                                            <span class="speech">Like it</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-print-paper"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                            <span class="speech">인쇄</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-ellipsis-h"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -33px; bottom: 100%; display: block;">
+                                            <span class="speech">이 게시물을</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w_type">
+                                        <i class="xe-pen"></i>
+                                        <span class="btn_txt">수정</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="w_type">
+                                        <i class="xe-close"></i>
+                                        <span class="btn_txt">삭제</span>
+                                    </a>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /READ HEADER -->
+                        <!-- READ BODY -->
+                        <div class="read_body">
+                            <h3 class="blind">게시물 내용</h3>
+                            <div class="xe_content">
+                                <img src="http://10.80.17.111/xe/files/attach/images/104/140/0cf02ed66087ea2fb480c9bbf1a5fdb2.png" alt="img_bd_con.png" width="1040" height="433" style="cursor: pointer;" rel="xe_gallery">
+                                <p><br></p>
+                                <p><img src="http://10.80.17.111/xe/files/attach/images/104/140/03010a96a8a51a06323d244fff5207d6.png" alt="img_bd_con2.png" width="1040" height="432" style="cursor: pointer;" rel="xe_gallery"></p>
+                                <p><br></p>
+                                <span style="font-size:18px;">Merry ChirstMas! 메리크리스마스!</span>
+                                <br>
+                                <p></p>
+                                <p></p>
+                                <p><br></p>
+                                <p><span style="font-size:13px;">date : 2014/11/24</span></p>
+                                <span style="font-size:13px;"></span>
+                                <p><span style="font-size:13px;">designer : marob</span></p>
+                                <span style="font-size:13px;"></span>
+                                <p><span style="font-size:13px;">art director : juna</span></p>
+                                <span style="font-size:13px;"></span>
+                                <p><span style="font-size:13px;">markup : gunil</span></p>
+                                <span style="font-size:13px;"></span>
+                                <p><span style="font-size:13px;">services : Design, Illustration</span></p>
+                                <p><br></p>
+                                <p><span style="font-size:13px;">XEcontest template B타입을 위한 작업, 크리스마스 스토리텔링.</span></p>
+                                <p><span style="font-size:13px;"><br></span></p>
+                            </div>			
+                        </div>
+                        <!-- /READ BODY -->
+                        <!-- READ FOOTER -->
+                        <div class="read_footer">
+                            <div class="tags">
+                                <i class="xe-tag-lefts ico_tag"><span class="blind">태그</span></i>
+                                <a href="#" class="tag">메리크리스마스</a><span class="comma">,</span>
+                                <a href="#" class="tag">merry christmas</a><span class="comma">,</span>
+                                <a href="#" class="tag">XEContest</a><span class="comma">,</span>
+                                <a href="#" class="tag">디자인</a><span class="comma">,</span>
+                                <a href="#" class="tag">일러스트레이션</a>
+                            </div>
+                            <div class="sns">
+                                <ul>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-facebook"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -30px; bottom: 100%; display: block;">
+                                            <span class="speech">Facebook</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-google-plus"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -25px; bottom: 100%; display: block;">
+                                            <span class="speech">Google</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-twitter"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -25px; bottom: 100%; display: block;">
+                                            <span class="speech">Twitter</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="tooltip">
+                                        <i class="xe-pinterest"></i>
+                                        <span class="tooltip_wrap" style="margin-left: -29px; bottom: 100%; display: block;">
+                                            <span class="speech">Pinterest</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                </ul>
+                            </div>
+                            <div class="etc">
+                                <div class="file_lst">
+                                    <span class="files_cnt">첨부 &lsquo;2&rsquo;</span>
+                                    <a href="#" class="file">christmas13.jpg</a><span class="comma">,</span>
+                                    <a href="#" class="file">christmas14.jpg</a><span class="comma">,</span>
+                                    <a href="#" class="file">christmas15.jpg</a>
+                                </div>
+                                <div class="btn_area">
+                                    <div class="btn_area_l">
+                                        <a href="#" class="btn_lst">
+                                            <i class="xe-list-ul-l"></i>
+                                            <span class="btn_txt">목록</span>
+                                        </a>
+                                    </div>
+                                    <div class="btn_area_r">
+                                        <ul class="func_bar_lst">
+                                        <li>
+                                            <!-- [D] 선택 시 class="on" 추가 -->
+                                            <a href="#" class="tooltip">
+                                                <i class="xe-arrow-up"></i>
+                                                <span class="tooltip_wrap" style="margin-left: -36px; bottom: 100%; display: block;">
+                                                    <span class="speech">(컨텐츠)위로</span>
+                                                    <i class="edge"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="tooltip">
+                                                <i class="xe-heart"></i>
+                                                <span class="tooltip_wrap" style="margin-left: -21px; bottom: 100%; display: block;">
+                                                    <span class="speech">Like it</span>
+                                                    <i class="edge"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="tooltip">
+                                                <i class="xe-print-paper"></i>
+                                                <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                                    <span class="speech">인쇄</span>
+                                                    <i class="edge"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="tooltip">
+                                                <i class="xe-ellipsis-h"></i>
+                                                <span class="tooltip_wrap" style="margin-left: -33px; bottom: 100%; display: block;">
+                                                    <span class="speech">이 게시물을</span>
+                                                    <i class="edge"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="w_type">
+                                                <i class="xe-pen"></i>
+                                                <span class="btn_txt">수정</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="w_type">
+                                                <i class="xe-close"></i>
+                                                <span class="btn_txt">삭제</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="sign">
+                                    <div class="sign_tit">
+                                        <span class="">글쓴이</span>
+                                    </div>
+                                    <div class="sign_con">
+                                        <!-- [D] 등록된 글쓴이 이미지 width, height 적용 -->
+                                        <img src="../board/img/thumb_xe_80.png" alt="" style="width:80px;height:80px" class="sign_img">
+                                        <div class="sign_desc">
+                                            <span class="writer_name">XpressEngin</span>
+                                            <p class="writer_desc">누구나 쉽고 편하고 자유롭게 콘텐츠를 발행을 할 수 있도록 하기 위한 CMS(Content Management System)입니다.<br>급변하는 인터넷 환경과 다양한 기능의 요구에 부응하기 위해 노력합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /READ FOOTER -->
+                        <!-- PREV, NEXT PAGE ARROW BUTTON -->
+                        <a href="#" class="btn_page prev_page" style="top:400px">
+                            <i class="xe-angle-left"></i>
+                            <div class="panel">
+                                <span class="panel_tit">이전글</span>
+                                <p class="panel_con">이전글 제목, 타이틀 정보가 노출 됩니다. 2줄 말줄임 필요(글자수제한)</p>
+                            </div>
+                        </a>
+                        <a href="#" class="btn_page next_page" style="top:400px">
+                            <i class="xe-angle-right"></i>
+                            <div class="panel">
+                                <span class="panel_tit">다음글</span>
+                                <p class="panel_con">다음글 제목, 타이틀 정보가 노출 됩니다. 2줄 말줄임 필요(글자수제한)</p>
+                            </div>
+                        </a>
+                        <!-- /PREV, NEXT PAGE ARROW BUTTON -->
+                    </div>
+                    <!-- COMMENT -->
+                    <div class="comment">
+                        <div class="lst_header cmt_header">
+                            <h3 class="lst_tit">댓글 <em class="lst_cnt">22</em></h3>
+                            <a href="#" class="lst_toggle"><span class="lst_txt">댓글닫기</span><i class="xe-angle-up lst_arrow"></i></a>
+                            <!-- [D] 댓글 닫혀 있을 때 노출 
+                                    <a href="#" class="fb_toggle"><span class="fb_txt">댓글열기</span><i class="xe-angle-down fb_arrow"></i></a>
+                                 [D] 댓글열기 클릭 시 class="cmt_lst_wrap" 영역 노출
+                            -->
+                        </div>
+                        <!-- COMMENT LIST WRAP -->
+                        <div class="cmt_lst_wrap" style="display:block">
+                            <!-- COMMENT LIST -->
+                            <ul class="cmt_lst">
+                            <li class="cmt_item">
+                                <div class="cmt_item_con">
+                                    <div class="cmt_profile">
+                                        <span class="ico_recmt"></span>
+                                        <img src="../board/img/thumb_user_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                    </div>
+                                    <div class="cmt_con">
+                                        <a href="#" class="cmt_writer">marob(로그인)</a>
+                                        <span class="cmt_date">1년 전</span>
+                                        <div class="xe_content">
+                                            댓글 테스트 입니다... 댓글의 댓글을 달 수 있습니다.
+                                        </div>
+                                    </div>
+                                    <div class="cmt_func_area">
+                                        <div class="cmt_func_more">
+                                            <a href="#"><i class="xe-ellipsis-h"></i><span class="cmt_txt">이 게시물을</span></a>
+                                        </div>
+                                        <a href="#"><i class="xe-pen"></i><span class="cmt_txt">수정</span></a>
+                                        <a href="#"><i class="xe-close"></i><span class="cmt_txt">삭제</span></a>
+                                        <a href="#"><i class="xe-comment-bubble"></i><span class="cmt_txt">댓글</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- [D] 댓글에 댓글 적용 시 class="re_cmt" 추가,
+                                     depth 에 따라 class="cmt_depth" ~ "cmt_depth2" 숫자 추가 적용 
+                            -->
+                            <li class="cmt_item re_cmt cmt_depth">
+                                <div class="cmt_item_con">
+                                    <div class="cmt_profile">
+                                        <span class="ico_recmt"></span>
+                                        <img src="../board/img/thumb_xe_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                    </div>
+                                    <div class="cmt_con">
+                                        <a href="#" class="cmt_writer">marob(로그인)</a>
+                                        <span class="cmt_date">1년 전</span>
+                                        <div class="xe_content">
+                                            댓글 테스트 입니다... 댓글의 댓글을 달 수 있습니다.
+                                        </div>
+                                    </div>
+                                    <div class="cmt_func_area">
+                                        <div class="cmt_func_more">
+                                            <a href="#"><i class="xe-ellipsis-h"></i><span class="cmt_txt">이 게시물을</span></a>
+                                        </div>
+                                        <a href="#"><i class="xe-pen"></i><span class="cmt_txt">수정</span></a>
+                                        <a href="#"><i class="xe-close"></i><span class="cmt_txt">삭제</span></a>
+                                        <a href="#"><i class="xe-comment-bubble"></i><span class="cmt_txt">댓글</span></a>
+                                    </div>    
+                                </div>
+                                <!-- RECOMMENT WRITE -->
+                                <div class="cmt_write_form">
+                                    <form action="" method="post">
+                                        <!-- [D] 비로그인 일 경우 노출 -->
+                                        <div class="write_author" style="display:none">
+                                            <div class="cmt_user_form essen_check">
+                                                <label for="recmt_author" title="글쓴이(필수)"><i class="xe-user"></i><span class="blind">글쓴이(필수)</span></label>
+                                                <input type="text" name="author" class="text-input" id="recmt_author" placeholder="글쓴이(필수)">
+                                            </div>
+                                            <div class="cmt_user_form essen_check">
+                                                <label for="recmt_password" title="비밀번호(필수)"><i class="xe-lock"></i><span class="blind">비밀번호(필수)</span></label>
+                                                <input type="password" name="email" class="text-input" id="recmt_password" placeholder="비밀번호(필수)">
+                                            </div>
+                                            <div class="cmt_user_form">
+                                                <label for="recmt_email" title="이메일 주소"><i class="xe-email"></i><span class="blind">이메일 주소</span></label>
+                                                <input type="text" name="url" class="text-input" id="recmt_email" placeholder="이메일 주소">
+                                            </div>
+                                            <div class="cmt_user_form">
+                                                <label for="recmt_url" title="홈페이지"><i class="xe-link-l"></i><span class="blind">홈페이지</span></label>
+                                                <input type="text" name="url" class="text-input" id="recmt_url" placeholder="홈페이지">
+                                            </div>
+                                        </div>
+                                        <div class="cmt_editor">
+                                            <div class="cmt_profile">
+                                                <span class="ico_recmt"></span>
+                                                <!-- [D] 댓글에 노출될 프로필 이미지 적용 및 노출 사이즈 적용 -->
+                                                <img src="../board/img/thumb_user_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                            </div>
+                                            <div class="cmt_textarea_wrap">
+                                                <textarea rows="8" cols="42" class="cmt_textarea" placeholder="Comment..."></textarea>
+                                            </div>
+                                            <div class="cmt_submit">
+                                                <!-- [D] 비밀글 쓰기 설정 시 노출 -->
+                                                <div class="secret_box" style="display:none">
+                                                    <input type="checkbox" id="cmt_write_secret" name="" value="">
+                                                    <label for="cmt_write_secret">비밀글 쓰기</label>    
+                                                </div>
+                                                <a href="#" class="btn_cmt_submit"><i class="xe-check"></i><span class="cmt_txt"> 댓글등록</span></a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /RECOMMENT WRITE -->
+                            </li>
+                            <li class="cmt_item re_cmt cmt_depth2">
+                                <div class="cmt_item_con">
+                                    <div class="cmt_profile">
+                                        <span class="ico_recmt"></span>
+                                        <!-- [D] 댓글에 노출될 프로필 이미지 적용 및 노출 사이즈 적용 -->
+                                        <img src="../board/img/thumb_user_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                    </div>
+                                    <div class="cmt_con">
+                                        <span class="cmt_writer">marob(비로그인)</span>
+                                        <span class="cmt_date">1년 전</span>
+                                        <div class="xe_content">
+                                            댓글 테스트 입니다... 댓글의 댓글을 달 수 있습니다.
+                                        </div>
+                                    </div>
+                                    <div class="cmt_func_area">
+                                        <div class="cmt_func_more">
+                                            <a href="#"><i class="xe-ellipsis-h"></i><span class="cmt_txt">이 게시물을</span></a>
+                                        </div>
+                                        <a href="#"><i class="xe-pen"></i><span class="cmt_txt">수정</span></a>
+                                        <a href="#"><i class="xe-close"></i><span class="cmt_txt">삭제</span></a>
+                                        <a href="#"><i class="xe-comment-bubble"></i><span class="cmt_txt">댓글</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="cmt_item">
+                                <div class="cmt_item_con">
+                                    <div class="cmt_profile">
+                                        <span class="ico_recmt"><span class="blind">대댓글</span></span>
+                                        <img src="../board/img/thumb_user_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                    </div>
+                                    <div class="cmt_con">
+                                        <span class="cmt_writer">marob(비로그인)</span>
+                                        <span class="cmt_date">1년 전</span>
+                                        <div class="xe_content">
+                                            댓글 테스트 입니다... 댓글의 댓글을 달 수 있습니다.
+                                        </div>
+                                    </div>
+                                    <div class="cmt_func_area">
+                                        <div class="cmt_func_more">
+                                            <a href="#"><i class="xe-ellipsis-h"></i><span class="cmt_txt">이 게시물을</span></a>
+                                        </div>
+                                        <a href="#"><i class="xe-pen"></i><span class="cmt_txt">수정</span></a>
+                                        <a href="#"><i class="xe-close"></i><span class="cmt_txt">삭제</span></a>
+                                        <a href="#"><i class="xe-comment-bubble"></i><span class="cmt_txt">댓글</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            </ul>
+                            <!-- /COMMENT LIST -->
+                            <!-- 댓글 쓰기 -->
+                            <div class="write_comment cmt_write_form">
+                                <form action="" method="post">
+                                    <!-- [D] 비로그인 일 경우 노출 -->
+                                    <div class="write_author" style="display:block">
+                                        <div class="cmt_user_form essen_check">
+                                            <label for="author" title="글쓴이(필수)"><i class="xe-user"></i><span class="blind">글쓴이(필수)</span></label>
+                                            <input type="text" name="author" class="text-input" id="author" placeholder="글쓴이(필수)">
+                                        </div>
+                                        <div class="cmt_user_form essen_check">
+                                            <label for="password" title="비밀번호(필수)"><i class="xe-lock"></i><span class="blind">비밀번호(필수)</span></label>
+                                            <input type="password" name="email" class="text-input" id="password" placeholder="비밀번호(필수)">
+                                        </div>
+                                        <div class="cmt_user_form">
+                                            <label for="email" title="이메일 주소"><i class="xe-email"></i><span class="blind">이메일 주소</span></label>
+                                            <input type="text" name="url" class="text-input" id="email" placeholder="이메일 주소">
+                                        </div>
+                                        <div class="cmt_user_form">
+                                            <label for="url" title="홈페이지"><i class="xe-link-l"></i><span class="blind">홈페이지</span></label>
+                                            <input type="text" name="url" class="text-input" id="url" placeholder="홈페이지">
+                                        </div>
+                                    </div>
+                                    <div class="cmt_editor">
+                                        <div class="cmt_profile">
+                                            <span class="ico_recmt"></span>
+                                            <!-- [D] 댓글에 노출될 프로필 이미지 적용 및 노출 사이즈 적용 -->
+                                            <img src="../board/img/thumb_user_64.png" alt="" class="cmt_profile_img" style="width:64px;height:64px">
+                                        </div>
+                                        <div class="cmt_textarea_wrap">
+                                            <textarea rows="8" cols="42" class="cmt_textarea" placeholder="Comment...">댓글 테스트 글입니다. 비밀글로 등록하면 게시글 등록자와 관리자만 글을 확인할 수 있습니다.</textarea>
+                                        </div>
+                                        <div class="cmt_submit">
+                                            <!-- [D] 비밀글 쓰기 설정 시 노출 -->
+                                            <div class="secret_box" style="display:block">
+                                                <input type="checkbox" id="cmt_write_secret" name="" value="">
+                                                <label for="cmt_write_secret">비밀글 쓰기</label>    
+                                            </div>
+                                            <a href="#" class="btn_cmt_submit"><i class="xe-check"></i><span class="cmt_txt"> 댓글등록</span></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /댓글 쓰기 -->
+                        </div>
+                        <!-- COMMENT LIST WRAP -->
+                    </div>
+                    <!-- /COMMENT -->
+                    
+                    <div class="board_lst_wrap">
+                        <!-- BOARD LIST -->
+                        <div class="board_lst_header lst_header">
+                            <h3 class="lst_tit">전체보기 <em class="lst_cnt">336</em></h3>
+                            <a href="#" class="lst_toggle"><span class="lst_txt">목록닫기</span><i class="xe-angle-up lst_arrow"></i></a>
+                            <!-- [D] 목록 닫혀 있을 때 노출 
+                                    <a href="#" class="fb_toggle"><span class="fb_txt">목록열기</span><i class="xe-angle-down fb_arrow"></i></a>
+                                 [D] 목록열기 클릭 시 class="cmt_lst_wrap" 영역 노출
+                            -->
+                        </div>
+                        <div class="board_list" id="board_list">
+                            <table class="tbl_board_lst">
+                            <caption>게시판 리스트</caption>
+                            <colgroup>
+                            <col>
+                            <col style="width:78px">
+                            <col style="width:108px">
+                            <col style="width:79px">
+                            </colgroup>
+                            <thead>
+                            <!-- LIST HEADER -->
+                            <tr>
+                            <th scope="col"><div class="ta_l">제목</div></th>
+                            <th scope="col"><div class="ta_c">날짜</div></th>
+                            <th scope="col"><div class="ta_c"><a href="#">추천 수</a></div></th>
+                            <th scope="col"><div class="ta_l"><a href="#">조회 수</a></div></th>
+                            </tr>
+                            <!-- /LIST HEADER -->
+                            </thead>
+                            <tbody>
+                            <!-- LIST -->
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <!-- [D] 읽은 글은 class="read_check" 추가 -->
+                            <td><div class="ta_l bd_tit read_check"><a href="#">읽은 페이지의 경우, 제목컬러가 #9d9d9d로 변경됩니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <!-- [D] 현재 위치한 페이지 class="on" 추가 -->
+                            <tr class="on">
+                            <td><div class="ta_l bd_tit"><a href="#">현재 위치한 페이지는, 배경과 글꼴 색상으로 구분할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <tr>
+                            <td><div class="ta_l bd_tit"><a href="#">게시판 목록 예시입니다. 제목을 제외한 각 항목을 구성하여 사용할 수 있습니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>																						
+                            </tr>
+                            <!-- /LIST -->
+                            </tbody>
+                            </table>
+                            <!--
+                            [D] 관리자 모드 시 노출 형태 (게시물 관리 체크박스 추가)
+                            <table class="tbl_board_lst">
+                            <caption>게시판 리스트</caption>
+                            <colgroup>
+                            <col>
+                            <col style="width:78px">
+                            <col style="width:108px">
+                            <col style="width:79px">
+                            <col style="width:30px">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                            <th scope="col"><div class="ta_c">제목</div></th>
+                            <th scope="col"><div class="ta_c">날짜</div></th>
+                            <th scope="col"><div class="ta_c"><a href="#">추천 수</a></div></th>
+                            <th scope="col"><div class="ta_l"><a href="#">조회 수</a></div></th>
+                            <th scope="col"><div class="ta_c"><input type="checkbox" class="chk_mng"></div></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bd_notice">
+                            <td><div class="ta_l bd_tit notice_check"><a href="#">공지사항으로 등록된 게시물입니다.</a></div></td>
+                            <td><div class="ta_c">2014.09.19</div></td>
+                            <td><div class="ta_c">112</div></td>
+                            <td><div class="ta_c">231</div></td>
+                            <td><div class="ta_c"><input type="checkbox" class="chk_mng"></div></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            -->
+                        </div>
+                        <!-- /BOARD LIST -->
+                        <div class="list_footer">
+                            <div class="btn_area">
+                                <div class="btn_area_l">
+                                    <a href="#" class="btn_type btn_lst" style="width:70px">
+                                        <i class="xe-list-ul-l"></i>
+                                        <span class="btn_txt">목록</span>
+                                    </a>
+                                    <div class="search_area">
+                                        <form action="" method="post">
+                                            <div class="search_select">
+                                                <select>
+                                                <option value="">제목+내용</option>
+                                                <option value="">제목</option>
+                                                <option value="">내용</option>
+                                                <option value="">댓글</option>
+                                                <option value="">이름</option>
+                                                <option value="">닉네임</option>
+                                                <option value="">아이디</option>
+                                                <option value="">태그</option>
+                                                </select>
+                                            </div>
+                                            <div class="search_con">
+                                                <input type="text" name="" value="" class="search_input" style="">
+                                                <a href="#" class="btn_type btn_search"><i class="xe-magnifier"></i><span class="blind">검색</span></a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="btn_area_r">
+                                    <a href="#" class="btn_type" style="width:70px">
+                                        <i class="xe-pen"></i>
+                                        <span class="btn_txt">쓰기</span>
+                                    </a>
+                                    <a href="#" class="btn_type" style="width:70px">
+                                        <i class="xe-tool"></i>
+                                        <span class="btn_txt">설정</span>
+                                    </a>
+                                    <a href="#" class="btn_type" style="width:104px">
+                                        <i class="xe-paper"></i>
+                                        <span class="btn_txt">게시글 관리</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- PAGINATE -->
+                            <div class="bd_paginate">
+                                <a href="#" class="pg_btn tooltip">
+                                    <i class="xe-angle-left"><span class="blind">이전</span></i>
+                                    <span class="tooltip_wrap" style="margin-left: -16px; bottom: 100%; display: block;">
+                                        <span class="speech">Prev</span>
+                                        <i class="edge"></i>
+                                    </span>
+                                </a>
+                                <a href="#" class="tooltip">1
+                                    <span class="tooltip_wrap" style="margin-left: -28px; bottom: 100%; display: block;">
+                                        <span class="speech">첫 페이지</span>
+                                        <i class="edge"></i>
+                                    </span>
+                                </a>
+                                <strong>2</strong>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <a href="#">8</a>
+                                <a href="#">9</a>
+                                <a href="#">10</a>
+                                <div class="more_page">
+                                    <a href="#" class="tooltip">...
+                                        <span class="tooltip_wrap" style="margin-left: -33px; bottom: 100%; display: block;">
+                                            <span class="speech">페이지 입력</span>
+                                            <i class="edge"></i>
+                                        </span>
+                                    </a>
+                                    <div class="page_box" style="margin-left:-89px;display: block;">
+                                        <input type="text" name="" value="" class="page_num">
+                                        <span class="page_total">/ 14</span>
+                                        <a href="#" class="btn_move">이동</a>
+                                        <span class="ico_edge"></span>
+                                    </div>
+                                </div>
+                                <a href="#" class="tooltip">14
+                                    <span class="tooltip_wrap" style="margin-left: -28px; bottom: 100%; display: block;">
+                                        <span class="speech">끝 페이지</span>
+                                        <i class="edge"></i>
+                                    </span>
+                                </a>
+                                <a href="#" class="pg_btn tooltip">
+                                    <i class="xe-angle-right"><span class="blind">다음</span></i>
+                                    <span class="tooltip_wrap" style="margin-left: -18px; bottom: 100%; display: block;">
+                                        <span class="speech">Next</span>
+                                        <i class="edge"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /PAGINATE -->
+                        </div>
+                    </div>
+                </div>
+    		</div>    
+    		<!-- /CONTENT -->
+		</div>
+		
+		<div class="ccl_area">
+		    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.ko" target="_blank"><span class="blind">저작자표시 - 동일조건변경허락</span></a>
+		</div>
+	</div>
+
+    <div class="footer_wrap">
+        <footer class="footer">
+            <div class="about">
+                <p class="about_thumb"><a href="#"><img src="./img/f_profile.png" alt="XE"></a></p>
+                <p class="f_cont">XpressEngine(XE) installation type is written in PHP CMS (Content Management System). Anybody can use or adapt open source licenses, open and anyone can participate in the project as a developer.</p>
+            </div>
+            <div class="subscribe">
+                <h2 class="f_title">subscribe</h2>    
+                <div class="send_email">
+                    <form action="get">
+                        <input type="text" placeholder="email" title="email" class="input_email">
+                        <input type="submit" value="&#xe619;" title="send button" class="btn_send">
+                    </form>
+                </div>
+                <p class="f_cont">You can fill in the e-mail to receive this information, announcements, and major events.</p>
+            </div>
+            <div class="explore">
+                <h2 class="f_title">Explore</h2>
+                <ul class="lst_sns">
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">Facebook</span></a></li>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">Twitter</span></a></li>
+                <li><a href="#"><i class="xe-linkedin"></i><span class="blind">Linkedin</span></a></li>
+                <li><a href="#"><i class="xe-google-plus"></i><span class="blind">Google plus</span></a></li>
+                <li><a href="#"><i class="xe-github"></i><span class="blind">Github</span></a></li>
+                </ul>    
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 68px 0px;width:285px;height:65px;float:left">    
+                <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                    <div class="widgetContainer">
+                        <div class="tb_widgetConuter">
+                            <dl>
+                            <dt class="blind">today</dt>
+                            <dd class="today_num">168</dd>
+                            <dt class="total">TOTAL</dt>
+                            <dd class="total num">553,712</dd>    
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">Copyright @ <a href="#">NAVER Corp.</a>Supported by <a href="#">D2 Program</a>.</p>  
+        </footer>
+    </div>
+</div>
+<a href="#" class="btn_top"><i class="xe-angle-up"><span class="blind">위로가기</span></i></a>
+</body>
+</html>

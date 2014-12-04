@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* 라운드 마스크 IE8 대응 */
+.bd_lst.gall_type.op_type3 .bd_img:hover .hover_info_wrap,.bd_lst.gall_type.op_type3 .bd_img:hover .hover_info_wrap .hover_info{opacity:.96;filter:alpha(opacity=96)}
+.bd_lst.gall_type.op_type3 .hover_info{opacity:0;filter:alpha(opacity=0)}
+.bd_lst.gall_type.op_type3 .img_mask_ie8{display:block}
+/*  //라운드 마스크 IE8 대응 */

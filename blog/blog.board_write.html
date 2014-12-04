@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (C) NAVER <http://www.navercorp.com> 
+ * @author NAVER (developers@xpressengine.com)
+ *
+ * Find and create module object by mif, act in Request Argument
+ * Set module information
+ *
+ * @mainpage XpressEngine
+ * @section intro introduction
+ *
+ * XE is an opensource and being developed in the opensource project.
+ * For more information, please see the link below.
+ * - Official website: http://www.xpressengine.com
+ * - Offcial Repository: https://github.com/xpressengine/xe-core
+ * 
+ * "XpressEngine (XE)" is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation; either 
+ * version 2.1 of the License, or (at your option) any later version. 
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+-->
+<html lang="ko">
+<head>
+<!-- META -->
+<meta charset="utf-8">
+<meta name="Generator" content="XpressEngine">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1100">
+<!-- TITLE -->
+<title>Blog Theme : XE Contest</title>
+<!-- CSS -->
+<link rel="stylesheet" href="../xe_common/xe.min.css">
+<link rel="stylesheet" href="./css/layout.blog.css">
+<link rel="stylesheet" href="./css/jquery.bxslider.css">
+<link rel="stylesheet" href="./css/widget.blog.css">
+<link rel="stylesheet" href="./css/widget.counter.css">
+<link rel="stylesheet" href="./css/widget.tag.css">
+<link rel="stylesheet" href="./css/widgetstyle.blog.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/49314/XEIconv10/style.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="../xe_icon/ie7/ie7.css"><![endif]-->
+<!-- JS -->
+<!--[if lt IE 9]><script src="../xe_common/jquery-1.x.min.js"></script><![endif]-->
+<!--[if gte IE 9]><!--><script src="../xe_common/jquery.min.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="../xe_common/html5.js"></script><![endif]-->
+<script src="../xe_common/xe.min.js"></script>
+<script src="./js/jquery.bxslider.js"></script>
+<script src="./js/layout.blog.js"></script>
+<script src="./js/colorset_test.js"></script>
+    
+<!-- 게시판 CSS, JS -->
+<link rel="stylesheet" href="../board/css/board.default.css">
+<!--[if lt IE 9]><link rel="stylesheet" href="../board/css/board.default_ie8.css"><![endif]-->
+<script src="../board/js/masonry.pkgd.min.js"></script>
+<script src="../board/js/board.default.js"></script>
+<!-- /게시판 css -->
+</head>
+
+<!-- [D] [Color Set] 
+         black & yellow(기본형) : 클래스 없음 
+         white & yellow        : color_white
+         -->
+<body class="color_white">
+<div class="container">
+    <!-- [D] 배경 이미지 고정형 : 이미지 사이즈 1440x800
+                          배경 이지미 패턴형 : 클래스 pattern 추가 
+                          배경 이미지 미사용 : 클래스 top_bg_none 추가 -->
+    <div class="top_bg top_bg_none" style="background-image:url(./img/head_bg_img.png)"></div>
+	<p class="skip"><a href="#content">메뉴 건너뛰기</a></p>
+    <header class="header">
+        <div class="top_section">
+            <h1>
+                <a href="#">
+                    <!-- [D] top_bg 영역에 배경 이미지 사용할 경우 블로그 타이틀 영역으로 블라인드 텍스트 적용  -->
+                    <span class="blind">http://contest.xpressengine.com/</span>
+                    <!-- [D] 배경 이미지 사용하지 않고, 이미지 요소 사용시  alt 값에 적용, 이미지  기본 사이즈 720*290 -->
+                    <img src="./img/head_img.png" class="header_img" alt="XE BLOG">
+                </a>
+            </h1>
+            <div class="search_area">                   
+                <!-- SEARCH -->
+                <form action="get" class="search">
+                    <input type="hidden" name="vid" value="">
+                    <input type="hidden" name="mid" value="">
+                    <input type="hidden" name="act" value="IS">
+                    <input type="text" name="is_keyword" value="" required placeholder="search" title="search input">
+                    <input type="submit" value="&#xe66d;">
+                </form>
+                <!-- /SEARCH -->
+            </div>
+            <div class="login_area">
+                <!-- before_login
+                <a href="#"><i class="xe-user"></i><span class="blind">로그인/회원가입</span></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /before_login -->
+                
+                <!-- after_login -->
+                <!-- [D] 프로필 이미지를 등록하지 않았을 경우 기본 이미지 노출, alt 속성에는 프로필명 적용 -->
+                <a href="#" class="login_after"><img src="./img/ico_default.jpg" alt="OO님 프로필"></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">회원정보 보기</a></li>
+                    <li><a href="#">스크랩 보기</a></li>
+                    <li><a href="#">저장함 보기</a></li>
+                    <li><a href="#">작성 글 보기</a></li>
+                    <li><a href="#">친구 보기</a></li>
+                    <li><a href="#">쪽지함 보기</a></li>
+                    <li class="logout"><a href="#">로그아웃</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /after_login -->
+            </div>
+            <!-- [D]회원이 관리자 권한을 가지고 있을 경우 노출  --> 
+            <div class="manage_area">
+                <a href="#"><i class="xe-tool"></i><span class="blind">관리</span></a>
+            </div>
+            <div class="social_area">
+                <ul>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">twitter</span></a></li> 
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">facebook</span></a></li>
+                <li><a href="#"><i class="xe-medium"></i><span class="blind">medium</span></a></li>   
+                </ul>
+            </div>    
+                
+        </div>
+        <!-- GNB -->
+        <nav class="gnb" id="gnb">
+            <ul>
+            <li><a href="blog.main.html">prologue</a></li>
+            <li>
+                <!-- [D] 하위 메뉴가 있을 경우 클래스 tri 추가 -->
+                <a href="#" class="tri">color-theme</a>
+                <ul class="depth2">
+                <li><a href="#">black &amp; yellow</a></li>
+                <li><a href="#">white &amp; yellow</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">sub type</a>
+                <ul class="depth2">
+                <li><a href="blog.sub.html">left sidebar</a></li>
+                <li><a href="blog.sub_right.html">right sidebar</a></li>
+                <li><a href="blog.sub_full.html">full width</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">gallery</a>
+                <ul class="depth2">
+                <li><a href="blog.board_gallery.html">standard 2 column</a></li>
+                <li><a href="blog.board_gallery2.html">masonry 4 column</a></li>
+                <li><a href="blog.board_gallery3.html">classic 3 column</a></li>
+                <li><a href="blog.board_gallery4.html">round 4 column</a></li>
+                <li><a href="blog.board_gallery_single.html">gallery single</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">blog</a>
+                <ul class="depth2">
+                <li><a href="blog.board_blog.html">blog style 1</a></li>
+                <li><a href="blog.board_blog2.html">blog style 2</a></li>
+                <li><a href="blog.board_blog3.html">blog style 3</a></li>
+                <li><a href="blog.board_blog4.html">blog style 4</a></li>
+                <li><a href="blog.board_list_basic.html">list style basic</a></li>
+                <li><a href="blog.board_guestbook.html">guestbook</a></li>
+                <li><a href="blog.board_write.html">write form</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.sub_license.html">license</a></li>    
+            </ul>
+        </nav>
+	    <!-- /GNB -->
+    </header>
+	<!-- [D] 서브 페이지 클래스 적용
+	         left sidebar  : body sub 
+	         right sidebar : body sub right 
+	         full width    : body suv full -->
+	<div class="body sub right">
+		<!-- SIDE BAR -->
+		<div class="sidebar">
+		    <div class="profile">
+		        <!-- [D] 이미지 기본 사이즈 200*160 -->
+		        <a href="#" class="thumb"><img src="./img/img_top_profile.png" alt=""></a>
+		        <h1>XpressEngine</h1>
+		        <p>누구나 쉽고 편하고 자유롭게 콘텐츠를 발행을 할 수 있도록 하기 위한 CMS</p>    
+		    </div>
+		    <nav class="lnb">
+		        <h2>Categories</h2>
+                <ul>
+                <li><a href="#">sub-menu</a></li>    
+                <li><a href="#">sub-menu</a></li> 
+                <!-- [D] 하위 메뉴가 존재할 경우 클래스 more 추가 및 열기/닫기 버튼 적용 --> 
+                <li class="more">
+                    <!-- [D] 하위 메뉴 열기 클릭시 부모 요소인 li에 클래스 open 추가 -->
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>  
+                <li class="more open">
+                    <!-- [D] 하위 메뉴 닫기 클릭시 부모 요소인 li에 클래스 open 삭제  -->
+                    <a href="#" class="btn_close"><span class="blind">하위 메뉴 닫기</span><i class="xe-minus-square"></i></a>
+                    <a href="#" class="btn_open"><span class="blind">하위 메뉴 열기</span><i class="xe-plus-square"></i></a>
+                    <a href="#">sub-menu</a>
+                    <ul class="more_info">
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">menu</a></li> 
+                    <li><a href="#">menu</a></li>     
+                    </ul>
+                </li>
+                <li><a href="#">sub-menu</a></li>  
+                </ul>		        
+		    </nav>
+		    <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent comments</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 42px 0px;width:100%;height:264px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Recent articles</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <ul class="tb_widgetB">
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            <li><a href="#">오호 참신하네요!</a></li>
+                            <li><a href="#">이번에 XECon에는 많은 것을 제가 배울 수 있었습니다.</a></li>
+                            <li><a href="#">마침 찾고있던 예제인데 잘 보고 있습니다. 감사합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 0px 0px;width:100%;height:181px;float:left">    
+                <div class="tb_simpleWidgetStyle">
+                    <h2 class="h_title v4">Tag</h2>
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <div class="widgetContainer">
+                            <div class="tb_widgetTag">
+                                <a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a><a href="#">XE</a><a href="#">XEContest</a><a href="#">홈페이지제작</a><a href="#">설치형 CMS</a><a href="#">Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+		</div>
+		<!-- /SIDE BAR -->
+		<div class="content_wrap">
+		    <!-- SUB TITLE -->
+	        <div class="sub_title">
+	            <h1>Write Form</h1>
+	            <ul class="page_location">
+                <li><a href="#">home</a></li>
+                <li><a href="#">Blog</a></li>
+                <!-- 리스트 마지막에 클래스 last 적용 -->
+                <li class="last"><a href="#">Write Form</a></li>
+                </ul>
+            </div>
+            <!-- /SUB TITLE -->    
+    		<!-- CONTENT -->
+    		<div class="content" id="content">
+                <div class="board">
+                    <!-- 게시물 등록 영역 -->
+                    <div class="board_write">
+                        <form action="" method="post">
+                            <div class="write_header">
+                                <!-- [D] 분류 적용 시 노출 -->
+                                <div class="search_select" style="display:block">
+                                    <select>
+                                    <option value="">분류</option>
+                                    </select>
+                                </div>
+                                <div class="search_con">
+                                    <input type="text" name="" value="" class="search_input" style="">
+                                </div>
+                            </div>
+                            <!-- 스마트 에디터 적용 영역 -->
+                            <div class="write_editor">
+                                <!-- [D] 임시 이미지 제거 후 에디터 추가 -->
+                                <img src="../board/img/@img_editor.jpg" alt="에디터 임시 이미지" style="width:761px;height:510px">
+                            </div>
+                            <!-- /스마트 에디터 적용 영역 -->
+                            <div class="write_footer">
+                                <div class="tag_area">
+                                    <label for="tag_input" class="blind">태그입력</label>
+                                    <input type="text" id="tag_input" name="" placeholder="쉼표(,)를 이용하여 태그를 복수 등록 할 수 있습니다." value="" class="tag_input" style="">
+                                </div>
+                                <div class="write_func_check">
+                                    <span>
+                                        <input type="checkbox" id="write_cb1" name="" value=""><label for="write_cb1">제목 굵게</label>
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" id="write_cb2" name="" value=""><label for="write_cb2">공지</label>
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" id="write_cb3" name="" value=""><label for="write_cb3">댓글 허용</label>
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" id="write_cb4" name="" value=""><label for="write_cb4">엮인글 허용</label>
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" id="write_cb5" name="" value=""><label for="write_cb5">알림</label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" id="write_rd1" name="" value=""><label for="write_rd1">공개</label>
+                                    </span>
+                                    <!-- [D] 게시판 설정에서 비공개 체크 시 노출 -->
+                                    <span style="display:none">
+                                        <input type="radio" id="write_rd2" name="" value=""><label for="write_rd2">비공개</label>
+                                    </span>
+                                </div>
+                                <div class="write_btn_area">
+                                    <div class="write_btn_area_l">
+                                        <a href="#" class="btn_type btn_back" style="width:90px">
+                                            <i class="xe-arrow-left"></i>
+                                            <span class="btn_txt">돌아가기</span>
+                                        </a>
+                                    </div>
+                                    <div class="write_btn_area_r">
+                                        <a href="#" class="btn_type btn_temp_save" style="width:90px">
+                                            <i class="xe-download"></i>
+                                            <span class="btn_txt">임시저장</span>
+                                        </a>
+                                        <a href="#" class="btn_type btn_preview" style="width:90px">
+                                            <i class="xe-paper"></i>
+                                            <span class="btn_txt">미리보기</span>
+                                        </a>
+                                        <a href="#" class="btn_type btn_sumbit" style="width:70px">
+                                            <i class="xe-pen"></i>
+                                            <span class="btn_txt">등록</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /게시물 등록 영역 -->
+                </div>
+    		</div>    
+    		<!-- /CONTENT -->
+		</div>
+		
+		<div class="ccl_area">
+		    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.ko" target="_blank"><span class="blind">저작자표시 - 동일조건변경허락</span></a>
+		</div>
+	</div>
+
+    <div class="footer_wrap">
+        <footer class="footer">
+            <div class="about">
+                <p class="about_thumb"><a href="#"><img src="./img/f_profile.png" alt="XE"></a></p>
+                <p class="f_cont">XpressEngine(XE) installation type is written in PHP CMS (Content Management System). Anybody can use or adapt open source licenses, open and anyone can participate in the project as a developer.</p>
+            </div>
+            <div class="subscribe">
+                <h2 class="f_title">subscribe</h2>    
+                <div class="send_email">
+                    <form action="get">
+                        <input type="text" placeholder="email" title="email" class="input_email">
+                        <input type="submit" value="&#xe619;" title="send button" class="btn_send">
+                    </form>
+                </div>
+                <p class="f_cont">You can fill in the e-mail to receive this information, announcements, and major events.</p>
+            </div>
+            <div class="explore">
+                <h2 class="f_title">Explore</h2>
+                <ul class="lst_sns">
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">Facebook</span></a></li>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">Twitter</span></a></li>
+                <li><a href="#"><i class="xe-linkedin"></i><span class="blind">Linkedin</span></a></li>
+                <li><a href="#"><i class="xe-google-plus"></i><span class="blind">Google plus</span></a></li>
+                <li><a href="#"><i class="xe-github"></i><span class="blind">Github</span></a></li>
+                </ul>    
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 68px 0px;width:285px;height:65px;float:left">    
+                <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                    <div class="widgetContainer">
+                        <div class="tb_widgetConuter">
+                            <dl>
+                            <dt class="blind">today</dt>
+                            <dd class="today_num">168</dd>
+                            <dt class="total">TOTAL</dt>
+                            <dd class="total num">553,712</dd>    
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">Copyright @ <a href="#">NAVER Corp.</a>Supported by <a href="#">D2 Program</a>.</p>  
+        </footer>
+    </div>
+</div>
+<a href="#" class="btn_top"><i class="xe-angle-up"><span class="blind">위로가기</span></i></a>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (C) NAVER <http://www.navercorp.com> 
+ * @author NAVER (developers@xpressengine.com)
+ *
+ * Find and create module object by mif, act in Request Argument
+ * Set module information
+ *
+ * @mainpage XpressEngine
+ * @section intro introduction
+ *
+ * XE is an opensource and being developed in the opensource project.
+ * For more information, please see the link below.
+ * - Official website: http://www.xpressengine.com
+ * - Offcial Repository: https://github.com/xpressengine/xe-core
+ * 
+ * "XpressEngine (XE)" is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU Lesser General Public 
+ * License as published by the Free Software Foundation; either 
+ * version 2.1 of the License, or (at your option) any later version. 
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+-->
+<html lang="ko">
+<head>
+<!-- META -->
+<meta charset="utf-8">
+<meta name="Generator" content="XpressEngine">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=1100">
+<!-- TITLE -->
+<title>Blog Theme : XE Contest</title>
+<!-- CSS -->
+<link rel="stylesheet" href="../xe_common/xe.min.css">
+<link rel="stylesheet" href="./css/layout.blog.css">
+<link rel="stylesheet" href="./css/jquery.bxslider.css">
+<link rel="stylesheet" href="./css/widget.blog.css">
+<link rel="stylesheet" href="./css/widget.counter.css">
+<link rel="stylesheet" href="./css/widgetstyle.blog.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/49314/XEIconv10/style.css">
+<!--[if lt IE 8]><link rel="stylesheet" href="../xe_icon/ie7/ie7.css"><![endif]-->
+<!-- JS -->
+<!--[if lt IE 9]><script src="../xe_common/jquery-1.x.min.js"></script><![endif]-->
+<!--[if gte IE 9]><!--><script src="../xe_common/jquery.min.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="../xe_common/html5.js"></script><![endif]-->
+<script src="../xe_common/xe.min.js"></script>
+<script src="./js/jquery.bxslider.js"></script>
+<script src="./js/layout.blog.js"></script>
+<script src="./js/colorset_test.js"></script>
+</head>
+
+<!-- [D] [Color Set] 
+         black & yellow(기본형) : 클래스 없음 
+         white & yellow        : color_white
+         -->
+<body>  
+<div class="container">
+    <!-- [D] 배경 이미지 고정형 : 이미지 사이즈 1440x800
+                          배경 이지미 패턴형 : 클래스 pattern 추가 
+                          배경 이미지 미사용 : 클래스 top_bg_none 추가 -->
+    <div class="top_bg" style="background-image:url(./img/head_bg_img.png)"></div>
+	<p class="skip"><a href="#content">메뉴 건너뛰기</a></p>
+    <header class="header">
+        <div class="top_section">
+            <h1>
+                <a href="#">
+                    <!-- [D] top_bg 영역에 배경 이미지 사용할 경우 블로그 타이틀 영역으로 블라인드 텍스트 적용  -->
+                    <span class="blind">http://contest.xpressengine.com/</span>
+                    <!-- [D] 배경 이미지 사용하지 않고, 이미지 요소 사용시  alt 값에 적용, 이미지  기본 사이즈 720*290 -->
+                    <img src="./img/head_img.png" class="header_img" alt="XE BLOG" style="display:none">
+                </a>
+            </h1>
+            <div class="search_area">                   
+                <!-- SEARCH -->
+                <form action="get" class="search">
+                    <input type="hidden" name="vid" value="">
+                    <input type="hidden" name="mid" value="">
+                    <input type="hidden" name="act" value="IS">
+                    <input type="text" name="is_keyword" value="" required placeholder="search" title="search input">
+                    <input type="submit" value="&#xe66d;">
+                </form>
+                <!-- /SEARCH -->
+            </div>
+            <div class="login_area">
+                <!-- before_login -->
+                <a href="#"><i class="xe-user"></i><span class="blind">로그인/회원가입</span></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /before_login -->
+                
+                <!-- after_login -->
+                <!-- [D] 프로필 이미지를 등록하지 않았을 경우 기본 이미지 노출, alt 속성에는 프로필명 적용 
+                <a href="#" class="login_after"><img src="./img/ico_default.jpg" alt="OO님 프로필"></a>
+                <div class="ly_login">
+                    <ul>
+                    <li><a href="#">회원정보 보기</a></li>
+                    <li><a href="#">스크랩 보기</a></li>
+                    <li><a href="#">저장함 보기</a></li>
+                    <li><a href="#">작성 글 보기</a></li>
+                    <li><a href="#">친구 보기</a></li>
+                    <li><a href="#">쪽지함 보기</a></li>
+                    <li class="logout"><a href="#">로그아웃</a></li>
+                    </ul>
+                    <span class="edge"></span>
+                </div>
+                <!-- /after_login -->
+            </div>
+            <!-- [D]회원이 관리자 권한을 가지고 있을 경우 노출  --> 
+            <div class="manage_area" style="display:none">
+                <a href="#"><i class="xe-tool"></i><span class="blind">관리</span></a>
+            </div>
+            <div class="social_area">
+                <ul>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">twitter</span></a></li> 
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">facebook</span></a></li>
+                <li><a href="#"><i class="xe-medium"></i><span class="blind">medium</span></a></li>   
+                </ul>
+            </div>    
+                
+        </div>
+        <!-- GNB -->
+        <nav class="gnb" id="gnb">
+            <ul>
+            <li><a href="blog.main.html">prologue</a></li>
+            <li>
+                <!-- [D] 하위 메뉴가 있을 경우 클래스 tri 추가 -->
+                <a href="blog.main.html" class="tri">color-theme</a>
+                <ul class="depth2">
+                <li><a href="#">black &amp; yellow</a></li>
+                <li><a href="#">white &amp; yellow</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">sub type</a>
+                <ul class="depth2">
+                <li><a href="blog.sub.html">left sidebar</a></li>
+                <li><a href="blog.sub_right.html">right sidebar</a></li>
+                <li><a href="blog.sub_full.html">full width</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">gallery</a>
+                <ul class="depth2">
+                <li><a href="blog.board_gallery.html">standard 2 column</a></li>
+                <li><a href="blog.board_gallery2.html">masonry 4 column</a></li>
+                <li><a href="blog.board_gallery3.html">classic 3 column</a></li>
+                <li><a href="blog.board_gallery4.html">round 4 column</a></li>
+                <li><a href="blog.board_gallery_single.html">gallery single</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="tri">blog</a>
+                <ul class="depth2">
+                <li><a href="blog.board_blog.html">blog style 1</a></li>
+                <li><a href="blog.board_blog2.html">blog style 2</a></li>
+                <li><a href="blog.board_blog3.html">blog style 3</a></li>
+                <li><a href="blog.board_blog4.html">blog style 4</a></li>
+                <li><a href="blog.board_list_basic.html">list style basic</a></li>
+                <li><a href="blog.board_guestbook.html">guestbook</a></li>
+                <li><a href="blog.board_write.html">write form</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.sub_license.html">license</a></li>    
+            </ul>
+        </nav>
+	    <!-- /GNB -->
+    </header>
+	<!-- [D] 서브 페이지 클래스 적용
+             left sidebar  : body sub 
+             right sidebar : body sub right 
+             full width    : body suv full -->
+	<div class="body">
+		<div class="content-wrap">
+    		<!-- CONTENT -->
+    		<div class="content" id="content">
+    		    <div class="xe-widget-wrapper" style="margin:0px 0px 40px 0px;width:100%;height:320px;float:left">    
+                    <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                        <ul class="bxslider contents_slider">
+                        <li>
+                            <!-- [D] 사용자가 이미지 크기 설정 가능 (기본 720x320)--> 
+                            <div class="thumb_area" style="width:720px;height:320px">
+                                <img src="./img/cont_thum.png" alt="">
+                            </div>
+                            <div class="cont_area">
+                                <h3 class="title"><a href="#">Beautifully designed with technical excellence &amp; exceptional attention to d...</a></h3>
+                                <p class="cont">This template is one published by <br>XpressEngine, Blog style. you can use this for free if you keep the license. Just Try it!!<br>- by juna &amp; gunil</p>
+                                <a href="#" class="view_all"><span><i class="xe-arrow-right"></i></span>Read More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumb_area" style="width:720px;height:320px">
+                                <img src="./img/cont_thum2.png" alt="">
+                            </div>
+                            <div class="cont_area">
+                                <h3 class="title"><a href="#">Our Favorite tweets of the year November 10,2013 - November 16,2014</a></h3>
+                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great content that we find on the web that can be of interest to web designers. <br>The best way to keep track of our tweets is simply to follow us on Twitter, however, in case you mis ...</p>
+                                <a href="#" class="view_all"><span><i class="xe-arrow-right"></i></span>Read More</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumb_area" style="width:720px;height:320px">
+                                <img src="./img/cont_thum3.png" alt="">
+                            </div>
+                            <div class="cont_area">
+                                <h3 class="title"><a href="#">How to build irresistible websites by designing for emotion</a></h3>
+                                <p class="cont">Good design has strong ties to emotion: this is something designers do know and understand. Unfortunately, in a world driven by SEO and the never-ending evolution of web tech, it’s a very easy thing to forget.</p>
+                                <a href="#" class="view_all"><span><i class="xe-arrow-right"></i></span>Read More</a>
+                            </div>
+                        </li>
+                        </ul>
+                        <script>
+                        jQuery(function($){ 
+                             // 컨텐츠 슬라이더 : bxSlider plugin 적용                                                                     
+                             $('.bxslider').bxSlider({
+                                mode: 'fade',
+                                speed: 200,
+                                infiniteLoop: true,
+                                pager: true,
+                                hideControlOnEnd: true,
+                                useCSS: false,
+                                touchEnabled: true,
+                                oneToOneTouch: true,
+                                pager: false
+                            });
+                            var LAYOUT_WIDTH = 1100; // 콘텐츠 슬라이드 위젯  너비 
+                            var imgWidth = $('.thumb_area').width(); // 이미지 너비
+                            $('.bx-controls-direction .bx-next').css('right', LAYOUT_WIDTH - imgWidth);
+                        });
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="xe-widget-wrapper" style="margin:0px 0px 40px 0px;width:100%;height:571px;float:left">
+                    <div class="tb_simpleWidgetStyle">
+                        <h2 class="h_title">Recent Post</h2>    
+                        <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                            <div class="widgetContainer">
+                                <ul class="tb_widgetGalleryA">
+                                <li>
+                                    <!-- [D] 사용자 설정에서 이미지 가로/세로 적용시 동일한 값 적용 -->
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g01.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <!-- [D] 사용자 설정에서 이미지 가로길이 적용시 동일한 너비값 적용 -->
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g02.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g03.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g04.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g05.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g06.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g07.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g08.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g09.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                               <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g10.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g11.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-g12.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <p class="cont">Every week we tweet a lot of interesting stuff highlighting great ...</p>
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area" style="width:172px">
+                                        <h3 class="title"><a href="#">Custom Illustration</a></h3>
+                                        <span class="date">2014.11.08</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                    </div> 
+                                </li>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="xe-widget-wrapper" style="margin:0px 0px 16px 0px;width:100%;height:507px;float:left">
+                    <div class="tb_simpleWidgetStyle">
+                        <h2 class="h_title">My Blog Stories</h2>    
+                        <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                            <div class="widgetContainer">
+                                <ul class="tb_widgetZineA">
+                                <li>
+                                    <!-- [D] 사용자 설정에서 이미지 가로/세로 적용시 동일한 값 적용 -->
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-w01.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area">
+                                        <a href="#" class="breadcrumb">Custom Illustration</a>
+                                        <h3 class="title"><a href="#">Custom Illustration Custom Illustration Custom Illustr ...</a></h3>
+                                        <p class="cont">A new Blog design abcde A new Blog design abcde A new Blog ...</p>
+                                        <span class="date">Dec 05, 2014</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                        <span class="like"><i class="xe-heart"></i><span class="blind">공감수</span> <span>12</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-w02.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area">
+                                        <a href="#" class="breadcrumb">Custom Illustration</a>
+                                        <h3 class="title"><a href="#">Custom Illustration Custom Illustration Custom Illustr ...</a></h3>
+                                        <p class="cont">A new Blog design abcde A new Blog design abcde A new Blog ...</p>
+                                        <span class="date">Dec 05, 2014</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                        <span class="like"><i class="xe-heart"></i><span class="blind">공감수</span> <span>12</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-w03.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area">
+                                        <a href="#" class="breadcrumb">Custom Illustration</a>
+                                        <h3 class="title"><a href="#">Custom Illustration Custom Illustration Custom Illustr ...</a></h3>
+                                        <p class="cont">A new Blog design abcde A new Blog design abcde A new Blog ...</p>
+                                        <span class="date">Dec 05, 2014</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                        <span class="like"><i class="xe-heart"></i><span class="blind">공감수</span> <span>12</span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb_area" style="width:172px;height:172px">
+                                        <img src="./img/t2-w04.jpg" alt="" style="width:172px;height:172px">
+                                        <span class="mask"></span>
+                                        <div class="hover_info_wrap">
+                                            <div class="hover_info">
+                                                <a href="#" class="btn_show"><i class="xe-plus"></i><span class="blind">썸네일 크게보기</span></a> <a href="#" class="btn_move"><i class="xe-angle-right"></i><span class="blind">바로가기</span></a>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="cont_area">
+                                        <a href="#" class="breadcrumb">Custom Illustration</a>
+                                        <h3 class="title"><a href="#">Custom Illustration Custom Illustration Custom Illustr ...</a></h3>
+                                        <p class="cont">A new Blog design abcde A new Blog design abcde A new Blog ...</p>
+                                        <span class="date">Dec 05, 2014</span>
+                                        <span class="comment"><i class="xe-comment-bubble"></i><span class="blind">댓글수</span> <span>12</span></span>
+                                        <span class="like"><i class="xe-heart"></i><span class="blind">공감수</span> <span>12</span></span>
+                                    </div>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="xe-widget-wrapper" style="margin:0px 0px 0px 0px;width:50%;height:345px;float:left">    
+                    <div class="tb_simpleWidgetStyle">
+                        <h2 class="h_title v2">Recent comment</h2>
+                        <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                            <div class="widgetContainer">
+                                <ul class="tb_widgetA">
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The basic idea of a meeting is simple. it’s when two or...</span>
+                                        <span class="date">2hours ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The concept of the meeting is ancient. At their most...</span>
+                                        <span class="date">22hours ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The basic idea of a meeting is simple. it’s when two or...</span>
+                                        <span class="date">23hours ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The concept of the meeting is ancient. At their most of...</span>
+                                        <span class="date">1day ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The basic idea of a meeting is simple. it’s when two or m...</span>
+                                        <span class="date">2days ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The concept of the meeting is ancient. At their most...</span>
+                                        <span class="date">2weeks ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="title">The basic idea of a meeting is simple. it’s when two or m...</span>
+                                        <span class="date">1year ago</span>
+                                    </a>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="xe-widget-wrapper" style="margin:0px 0px 0px 0px;width:50%;height:361px;float:left">    
+                    <div class="tb_simpleWidgetStyle">
+                        <h2 class="h_title v3">Guest book</h2>
+                        <div class="control">
+                            <span id="guest-slider-prev"></span>
+                            <span id="guest-slider-next"></span>
+                        </div>
+                        <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                            <div class="widgetContainer">
+                                <ul class="bxslider2 gustbook_slider">
+                                <li>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">Every week we tweet a lot of interesting stuff highlighting great content that we find on the web that can be of interest to web designers.</p>
+                                        <span class="author">- XpressEngine Community Developers</span>
+                                    </a>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">This is a excellent article & blog! I believe you have to be passionate about what you do, who you are doing it for, and why you are doing it or it will mean nothing.</p>
+                                        <span class="author">- XE</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">Design intrigues me and and I love learning more about and others' opinions on it! Thank you for sharing and giving me some inspiration for my work today!</p>
+                                        <span class="author">- Juna</span>
+                                    </a>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">Thanks XE,
+I actually think our job is to speak to both! I have just found that emotion, especially authentic emotion, is what's most often overlooked.</p>
+                                        <span class="author">- Kkongchi</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">This is also a good way to make sure all images and everything else are fully loaded. $( window ).load(function() { // Run code });</p>
+                                        <span class="author">- G.JHyeok</span>
+                                    </a>
+                                    <a href="#" class="cont_area">
+                                        <p class="cont">The first snippet is incorrect as documented by an issue in the jQuery API repository. It'll run the handler two times which is incorrect. The handler should be attached to document ...</p>
+                                        <span class="author">- BNU</span>
+                                    </a>
+                                </li>
+                                </ul>
+                                <script>
+                                jQuery(function($){ 
+                                     // 방명록 슬라이더 : bxSlider plugin 적용                                                                     
+                                     $('.bxslider2').bxSlider({
+                                        mode: 'fade',
+                                        nextSelector: '#guest-slider-next',
+                                        prevSelector: '#guest-slider-prev',
+                                        pager: false
+                                    });
+                                });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    		<!-- /CONTENT -->
+		</div>
+		<div class="ccl_area">
+		    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.ko " target="_blank"><span class="blind">저작자표시 - 동일조건변경허락</span></a>
+		</div>
+	</div>
+
+    <div class="footer_wrap">
+        <footer class="footer">
+            <div class="about">
+                <p class="about_thumb"><a href="#"><img src="./img/f_profile.png" alt="XE"></a></p>
+                <p class="f_cont">XpressEngine(XE) installation type is written in PHP CMS (Content Management System). Anybody can use or adapt open source licenses, open and anyone can participate in the project as a developer.</p>
+            </div>
+            <div class="subscribe">
+                <h2 class="f_title">subscribe</h2>    
+                <div class="send_email">
+                    <form action="get">
+                        <input type="text" placeholder="email" title="email" class="input_email">
+                        <input type="submit" value="&#xe619;" title="send button" class="btn_send">
+                    </form>
+                </div>
+                <p class="f_cont">You can fill in the e-mail to receive this information, announcements, and major events.</p>
+            </div>
+            <div class="explore">
+                <h2 class="f_title">Explore</h2>
+                <ul class="lst_sns">
+                <li><a href="#"><i class="xe-facebook"></i><span class="blind">Facebook</span></a></li>
+                <li><a href="#"><i class="xe-twitter"></i><span class="blind">Twitter</span></a></li>
+                <li><a href="#"><i class="xe-linkedin"></i><span class="blind">Linkedin</span></a></li>
+                <li><a href="#"><i class="xe-google-plus"></i><span class="blind">Google plus</span></a></li>
+                <li><a href="#"><i class="xe-github"></i><span class="blind">Github</span></a></li>
+                </ul>    
+            </div>
+            <div class="xe-widget-wrapper" style="margin:0px 0px 68px 0px;width:285px;height:65px;float:left">    
+                <div style="*zoom:1;padding:0 0px 0px 0px !important;">
+                    <div class="widgetContainer">
+                        <div class="tb_widgetConuter">
+                            <dl>
+                            <dt class="blind">today</dt>
+                            <dd class="today_num">168</dd>
+                            <dt class="total">TOTAL</dt>
+                            <dd class="total num">553,712</dd>    
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">Copyright @ <a href="#">NAVER Corp.</a>Supported by <a href="#">D2 Program</a>.</p>  
+        </footer>
+    </div>
+</div>
+<a href="#" class="btn_top"><i class="xe-angle-up"><span class="blind">위로가기</span></i></a>
+</body>
+</html>
